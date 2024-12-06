@@ -33,11 +33,10 @@ namespace Loginpage_Task
 
                     if (emailCount > 0)
                     {
-                        // Email already exists, show a message to the user
                         lblError.Text = "This email is already registered. Please use a different email.";
                         lblError.ForeColor = System.Drawing.Color.Red;
                         lblError.Visible = true;
-                        con.Close(); // Close the connection and prevent further processing
+                        con.Close(); 
                         return;
                     }
 
@@ -55,10 +54,7 @@ namespace Loginpage_Task
                     con.Open();
                     cmd.ExecuteNonQuery();
 
-                    // Send a welcome email after registration
                     SendWelcomeEmail(txtEmail.Text.Trim(), txtUserName.Text.Trim());
-
-                    // Redirect the user to the login page
                     Response.Redirect("Login.aspx");
                 }
             }
